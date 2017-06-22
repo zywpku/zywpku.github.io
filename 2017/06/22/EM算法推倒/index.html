@@ -93,12 +93,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="微雨潇潇">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EM算法推倒">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/EM算法推倒/index.html">
 <meta property="og:site_name" content="微雨潇潇">
+<meta property="og:description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
+<meta property="og:updated_time" content="2017-06-22T10:20:00.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微雨潇潇">
+<meta name="twitter:title" content="EM算法推倒">
+<meta name="twitter:description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/22/EM算法推倒/"/>
 
 
 
 
 
-  <title>微雨潇潇</title>
+  <title>EM算法推倒 | 微雨潇潇</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -158,9 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,9 +245,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -271,9 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/22/EM算法推倒/" itemprop="url">EM算法推倒</a></h1>
+          <h1 class="post-title" itemprop="name headline">EM算法推倒</h1>
         
 
         <div class="post-meta">
@@ -320,9 +320,7 @@
       
 
       
-        
-          
-            <h1 id="EM算法详解"><a href="#EM算法详解" class="headerlink" title="EM算法详解"></a>EM算法详解</h1><p>很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功力尚浅，即使是人人熟知的“太祖长拳”在乔峰手里也能耍的虎虎生风，这不得不让人叹然。我们每个人都想做本职行业里的英雄，但是现今跟风严重，真正静下心来的又能有几人，我们只想打着科班出身的名号混入所谓国内排名多少多少的研究机构从事在最火的研究领域，却不曾想过能力与研究地位的不匹配最终让我们变得猫不是猫，虎也不是虎。吐槽到此为止……言归正传，这次觉得有必要做一次详细的EM算法推倒，一方面是对工作中遇到问题的总结，另一方也加深对基础问题的理解。</p>
+        <h1 id="EM算法详解"><a href="#EM算法详解" class="headerlink" title="EM算法详解"></a>EM算法详解</h1><p>很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功力尚浅，即使是人人熟知的“太祖长拳”在乔峰手里也能耍的虎虎生风，这不得不让人叹然。我们每个人都想做本职行业里的英雄，但是现今跟风严重，真正静下心来的又能有几人，我们只想打着科班出身的名号混入所谓国内排名多少多少的研究机构从事在最火的研究领域，却不曾想过能力与研究地位的不匹配最终让我们变得猫不是猫，虎也不是虎。吐槽到此为止……言归正传，这次觉得有必要做一次详细的EM算法推倒，一方面是对工作中遇到问题的总结，另一方也加深对基础问题的理解。</p>
 <h2 id="GMM模型"><a href="#GMM模型" class="headerlink" title="GMM模型"></a>GMM模型</h2><p>假设有一个数据样本$\{x_1,x_2,…,x_m\}$,其中每一个样本数据$x_i$都是一个$d\times 1$的列向量。现在我们想要最大限度的求得样本数据的分布情况，问题已经清晰，接下来就是要建立模型。我们假设这组样本数据服从GMM（高斯混合模型），我们需要根据数据确定每一个高斯模型的具体参数。</p>
 <h2 id="EM算法推倒"><a href="#EM算法推倒" class="headerlink" title="EM算法推倒"></a>EM算法推倒</h2><p>假设样本数据是由C个高斯分布混合而成，并且第k个高斯分布符合多项式分布，我们可以设定高斯的先验概率<br>\begin{equation}<br>p(C_k) = \phi_k<br>\end{equation}<br>而第$i$个样本数据在第k个高斯分布下的概率为<br>\begin{equation}<br>p(x_i|C_k) \sim \frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}<br>\end{equation}<br>我们可以得到样本$i$在GMM模型下的概率密度函数<br>\begin{equation}<br>p(x_i,C) = \sum_{j=0}^{C}p(C_j)p(x_i|C_j)<br>\end{equation}<br>假设每一个样本数据都独立同分布，我们可以得到这m个观测样本的对数似然函数<br>\begin{equation}<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\mathcal{p}(x_i,C))\\<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j))<br>\end{equation}</p>
 <h3 id="优化均值期望-mu-k"><a href="#优化均值期望-mu-k" class="headerlink" title="优化均值期望$\mu_k$"></a>优化均值期望$\mu_k$</h3><p>我们$\mathcal{L}$求关于$\mu_k$的偏微分<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial }{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) &amp;= \sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i,C)\\<br>&amp;=\sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}\sum_{j=0}^{C}p(C_j)p(x_i|C_j)\\<br>&amp;= \sum_{i=0}^{m}\frac{p(C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i|C_k)<br>\end{aligned}<br>\end{equation}<br>利用复合函数的求导性质，我们可将上式变形得到<br>\begin{equation}<br>= \sum_{i=0}^{m}\frac{p(C_k)p(x_i|C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>因此整理得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>对多元正太分布函数取对数得到<br>\begin{equation}<br>\begin{aligned}<br>logp(x_i|C_k) &amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}\right)\\<br>&amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)<br>\end{aligned}<br>\end{equation}<br>对多元正态分布取对数后求第k个分量均值的偏倒数<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}\left(-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\right)<br>\end{aligned}<br>\end{equation}<br>由于<br>\begin{equation}<br>\frac{\partial}{\partial Y}\left(Y^T\Sigma^{-1}Y\right) = \Sigma^{-1}Y+(\Sigma^{-1})^TY<br>\end{equation}<br>因此可以得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)=\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>我们要最大化释然函数，必然要求对各个估计参数的偏导要等于0，其中，<br>\begin{equation}<br>\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)\neq  0<br>\end{equation}<br>得到<br>\begin{equation}<br>\sum_{i=0}^{m}p(C_k|x_i)(x_i-\mu_k) = 0<br>\end{equation}<br>化解得出<br>\begin{equation}<br>\mu_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)x_i}{\sum_{i=0}^{m}p(C_k|x_i)}<br>\end{equation}</p>
@@ -336,20 +334,27 @@
 <li>跳转到第二步，直到满足收敛条件。</li>
 </ol>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -357,372 +362,38 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Z变换/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏榆小生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="微雨潇潇">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/22/Z变换/" itemprop="url">Z变换</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:43:42+08:00">
-                2017-06-22
-              </time>
+              <a href="/2017/06/22/Z变换/" rel="next" title="Z变换">
+                <i class="fa fa-chevron-left"></i> Z变换
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：<br><a href="http://iiscs.wssu.edu/drupal/node/2572" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2572</a><br><a href="http://iiscs.wssu.edu/drupal/node/2573" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2573</a><br>补充材料源自：<br><a href="http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm" target="_blank" rel="external">http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm</a><br>Z变换可以看成是傅里叶变换的变种(即傅里叶变换是收敛域在单位圆上的Z变换)。根据序列的形式，Z变换可以分为有限长序列Z变换，右边序列Z变换，左边序列Z变换，双边Z变换。</p>
-<h2 id="有限长序列Z变换"><a href="#有限长序列Z变换" class="headerlink" title="有限长序列Z变换"></a>有限长序列Z变换</h2><p>有限长序列是指在有限区间 $n_1\leq n\leq n_2$ 序列具有非零值，在此区间外，序列值皆为零。有限长序列Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{n_2}x(n)z^{-n}<br>\end{equation}<br>由级数的相关知识可知，其收敛域包含区间 $0&lt;|z|&lt;\infty$。<br>如果$n_1\geq 0$, 收敛域为$0&lt;|z|\leq \infty$;<br>如果$n_2\leq 0$, 收敛域为$0\leq |z| &lt; \infty$。</p>
-<h2 id="右边序列Z变换"><a href="#右边序列Z变换" class="headerlink" title="右边序列Z变换"></a>右边序列Z变换</h2><p>右边序列是指在$n\geq n_1$时，x(n)有值，在$n＜n_1$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x-}$以外的Z平面，即$Z&gt;R_{x-}$，如下图所示。<br><img src="/2017/06/22/Z变换/右边序列Z.jpg" alt="右边序列Z"></p>
-<h2 id="左边序列Z变换"><a href="#左边序列Z变换" class="headerlink" title="左边序列Z变换"></a>左边序列Z变换</h2><p>左边序列是指在$n\leq n_2$时，x(n)有值，$n＞n_2$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{n_2}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x+}$以内的Z平面，即$Z&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/左边序列Z.jpg" alt="左边序列Z"></p>
-<h2 id="双边Z变换"><a href="#双边Z变换" class="headerlink" title="双边Z变换"></a>双边Z变换</h2><p>这类序列是指n为任意值时x(n)皆有值的序列，其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>双边序列的收敛域为$R_{x-}&lt;|Z|&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/双边Z变换.jpg" alt="双边Z变换"> </p>
-<h2 id="定义及推理"><a href="#定义及推理" class="headerlink" title="定义及推理"></a>定义及推理</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>现考虑最一般的形式，双边Z变换。重新观察Z变换：<br>\begin{equation}<br>X(z)=\mathcal{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这里，z是复数，用极坐标的形式对其进行表示如下：<br>\begin{equation}<br>z = re^{j\Omega},\quad r\geq 0,\quad -\pi&lt; \Omega \leq \pi<br>\end{equation}<br>所以<br>\begin{equation}<br>X(z) = \sum_{n=-\infty}^{\infty}x(n)r^{-n}e^{-j\Omega n}<br>\end{equation}<br>当$r=1$时，对应DTFT。</p>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>考虑序列$x_1[n] = a^nu[n]$。如果$|a|&gt;1$，其傅里叶变换不存在。然而，对于任意的a, 当$r&gt;|a|$时, 级数$x[n]r^{-n}$绝对可和，此时<br>\begin{equation}<br>X_1(z) = \sum_{n=0}^{\infty}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&gt;|a|<br>\end{equation}</p>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>考虑序列$x_2[n]=-a^nu[-n-1]$,当$|a|&lt;1$时，其DTFT不存在。然而对于任意a,只要$r&lt;|a|$,级数$x[n]r^{-n}$绝对可和, 此时<br>\begin{equation}<br>X_1(z) = \sum_{n=-\infty}^{-1}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&lt;|a|<br>\end{equation}<br>从以上两个示例可以看出，即使Z变换的形式相同，但最终其决定作用的是其收敛域（region of convergence, ROC）。另外从其表示形式引申，可以将Z变换重新表示如下：<br>\begin{equation}<br>X(z) = \frac{Q(z)}{P(z)}<br>\end{equation}<br>对于以上公式，分别另分子，分母等于零；求得的值分别为零点和极点。收敛半径在零点和极点之间。</p>
-<h3 id="逆Z变换"><a href="#逆Z变换" class="headerlink" title="逆Z变换"></a>逆Z变换</h3><p>逆逆Z变换的形式如下（这里不做推倒）：<br>\begin{equation}<br>x[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}X(z)z^nd\omega,\quad z=\hat{r}e^{j\omega}<br>\end{equation}<br>其中，$\hat{r}$用来表示收敛域。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Wiener-Filter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏榆小生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="微雨潇潇">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/22/Wiener-Filter/" itemprop="url">Wiener Filter</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:32:36+08:00">
-                2017-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏榆小生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="微雨潇潇">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/09/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-09T12:34:28+08:00">
-                2017-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -730,6 +401,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -749,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -794,6 +478,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EM算法详解"><span class="nav-number">1.</span> <span class="nav-text">EM算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GMM模型"><span class="nav-number">1.1.</span> <span class="nav-text">GMM模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM算法推倒"><span class="nav-number">1.2.</span> <span class="nav-text">EM算法推倒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化均值期望-mu-k"><span class="nav-number">1.2.1.</span> <span class="nav-text">优化均值期望$\mu_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化方差-Sigma-k"><span class="nav-number">1.2.2.</span> <span class="nav-text">优化方差$\Sigma_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化各高斯分量的权重-p-C-k"><span class="nav-number">1.2.3.</span> <span class="nav-text">优化各高斯分量的权重$p(C_k)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结各优化分量"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结各优化分量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">1.3.</span> <span class="nav-text">算法流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -907,10 +607,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
