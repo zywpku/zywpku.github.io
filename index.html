@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="default">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -135,7 +135,7 @@
   <title>微雨潇潇</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
 
@@ -201,7 +201,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -211,7 +221,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -273,7 +283,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/22/EM算法推倒/" itemprop="url">EM算法推倒</a></h1>
+                <a class="post-title-link" href="/2017/06/22/EM算法推倒/" itemprop="url">EM算法推导</a></h1>
         
 
         <div class="post-meta">
@@ -283,7 +293,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T16:34:42+08:00">
                 2017-06-22
@@ -295,6 +305,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -324,7 +356,7 @@
           
             <h1 id="EM算法详解"><a href="#EM算法详解" class="headerlink" title="EM算法详解"></a>EM算法详解</h1><p>很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功力尚浅，即使是人人熟知的“太祖长拳”在乔峰手里也能耍的虎虎生风，这不得不让人叹然。我们每个人都想做本职行业里的英雄，但是现今跟风严重，真正静下心来的又能有几人，我们只想打着科班出身的名号混入所谓国内排名多少多少的研究机构从事在最火的研究领域，却不曾想过能力与研究地位的不匹配最终让我们变得猫不是猫，虎也不是虎。吐槽到此为止……言归正传，这次觉得有必要做一次详细的EM算法推倒，一方面是对工作中遇到问题的总结，另一方也加深对基础问题的理解。</p>
 <h2 id="GMM模型"><a href="#GMM模型" class="headerlink" title="GMM模型"></a>GMM模型</h2><p>假设有一个数据样本$\{x_1,x_2,…,x_m\}$,其中每一个样本数据$x_i$都是一个$d\times 1$的列向量。现在我们想要最大限度的求得样本数据的分布情况，问题已经清晰，接下来就是要建立模型。我们假设这组样本数据服从GMM（高斯混合模型），我们需要根据数据确定每一个高斯模型的具体参数。</p>
-<h2 id="EM算法推倒"><a href="#EM算法推倒" class="headerlink" title="EM算法推倒"></a>EM算法推倒</h2><p>假设样本数据是由C个高斯分布混合而成，并且第k个高斯分布符合多项式分布，我们可以设定高斯的先验概率<br>\begin{equation}<br>p(C_k) = \phi_k<br>\end{equation}<br>而第$i$个样本数据在第k个高斯分布下的概率为<br>\begin{equation}<br>p(x_i|C_k) \sim \frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}<br>\end{equation}<br>我们可以得到样本$i$在GMM模型下的概率密度函数<br>\begin{equation}<br>p(x_i,C) = \sum_{j=0}^{C}p(C_j)p(x_i|C_j)<br>\end{equation}<br>假设每一个样本数据都独立同分布，我们可以得到这m个观测样本的对数似然函数<br>\begin{equation}<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\mathcal{p}(x_i,C))\\<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j))<br>\end{equation}</p>
+<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2><p>假设样本数据是由C个高斯分布混合而成，并且第k个高斯分布符合多项式分布，我们可以设定高斯的先验概率<br>\begin{equation}<br>p(C_k) = \phi_k<br>\end{equation}<br>而第$i$个样本数据在第k个高斯分布下的概率为<br>\begin{equation}<br>p(x_i|C_k) \sim \frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}<br>\end{equation}<br>我们可以得到样本$i$在GMM模型下的概率密度函数<br>\begin{equation}<br>p(x_i,C) = \sum_{j=0}^{C}p(C_j)p(x_i|C_j)<br>\end{equation}<br>假设每一个样本数据都独立同分布，我们可以得到这m个观测样本的对数似然函数<br>\begin{equation}<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\mathcal{p}(x_i,C))\\<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j))<br>\end{equation}</p>
 <h3 id="优化均值期望-mu-k"><a href="#优化均值期望-mu-k" class="headerlink" title="优化均值期望$\mu_k$"></a>优化均值期望$\mu_k$</h3><p>我们$\mathcal{L}$求关于$\mu_k$的偏微分<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial }{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) &amp;= \sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i,C)\\<br>&amp;=\sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}\sum_{j=0}^{C}p(C_j)p(x_i|C_j)\\<br>&amp;= \sum_{i=0}^{m}\frac{p(C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i|C_k)<br>\end{aligned}<br>\end{equation}<br>利用复合函数的求导性质，我们可将上式变形得到<br>\begin{equation}<br>= \sum_{i=0}^{m}\frac{p(C_k)p(x_i|C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>因此整理得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>对多元正太分布函数取对数得到<br>\begin{equation}<br>\begin{aligned}<br>logp(x_i|C_k) &amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}\right)\\<br>&amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)<br>\end{aligned}<br>\end{equation}<br>对多元正态分布取对数后求第k个分量均值的偏倒数<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}\left(-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\right)<br>\end{aligned}<br>\end{equation}<br>由于<br>\begin{equation}<br>\frac{\partial}{\partial Y}\left(Y^T\Sigma^{-1}Y\right) = \Sigma^{-1}Y+(\Sigma^{-1})^TY<br>\end{equation}<br>因此可以得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)=\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>我们要最大化释然函数，必然要求对各个估计参数的偏导要等于0，其中，<br>\begin{equation}<br>\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)\neq  0<br>\end{equation}<br>得到<br>\begin{equation}<br>\sum_{i=0}^{m}p(C_k|x_i)(x_i-\mu_k) = 0<br>\end{equation}<br>化解得出<br>\begin{equation}<br>\mu_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)x_i}{\sum_{i=0}^{m}p(C_k|x_i)}<br>\end{equation}</p>
 <h3 id="优化方差-Sigma-k"><a href="#优化方差-Sigma-k" class="headerlink" title="优化方差$\Sigma_k$"></a>优化方差$\Sigma_k$</h3><p>\begin{equation}<br>\frac{\partial}{\partial \Sigma_k}log\mathcal{L}(\mu,\Sigma,C)= \sum_{i=0}^{m}\frac{p(C_k)p(x_i|C_k)}{p(x_i,C)}\frac{\partial}{\partial \Sigma_k}log(p(x_i|C_k))<br>\end{equation}<br>行列式对 其对应的矩阵求微分有如下性质：<br>\begin{equation}<br>\frac{\mathrm{d} }{\mathrm{d} A}log|A| = (A^{-1})^T<br>\end{equation}<br>另外一个性质<br>\begin{equation}<br>\begin{aligned}<br>&amp;tr(ABC) = tr(CAB) = tr(BCA)\\<br>&amp;\frac{\mathrm{d} }{\mathrm{d} A}tr(BA) = B^T\\<br>&amp;\frac{\mathrm{d} }{\mathrm{d} A}tr(A^{-1}B) = -(A^{-1})^TB(A^{-1})^T<br>\end{aligned}<br>\end{equation}<br>所以整理得到<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \Sigma_k}log(p(x_i|C_k)\\<br>=&amp;-\frac{1}{2}(\Sigma_k^{-1})^T+\frac{1}{2}(\Sigma_k^{-1})^T(x_i-\mu_k)(x_i-\mu_k)^T(\Sigma_k^{-1})^T<br>\end{aligned}<br>\end{equation}<br>因此<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \Sigma_k}log\mathcal{L}(\mu,\Sigma,C)\\<br>=&amp;\sum_{i=0}^{m}p(C_k|x_i)\left(-\frac{1}{2}(\Sigma_k^{-1})^T+\frac{1}{2}(\Sigma_k^{-1})^T(x_i-\mu_k)(x_i-\mu_k)^T(\Sigma_k^{-1})^T\right)<br>\end{aligned}<br>\end{equation}<br>对偏微分取0求得<br>\begin{equation}<br>\Sigma_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)\left((x_i-\mu_k)(x_i-\mu_k)^T\right)}{\sum_{i=0}^{m}p(C_k|x_i)}<br>\end{equation}</p>
 <h3 id="优化各高斯分量的权重-p-C-k"><a href="#优化各高斯分量的权重-p-C-k" class="headerlink" title="优化各高斯分量的权重$p(C_k)$"></a>优化各高斯分量的权重$p(C_k)$</h3><p>现在来看在各个分量的条件下要使得释然函数最大，这是一个优化问题<br>\begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j));\\<br>&amp;p(C_j)\geq0,j = 1,2,…,C;\\<br>&amp;\sum_{j=0}^{C}p(C_j)=1;\\<br>&amp;\sum_{j=0}^{C}p(C_j|x_i) =1; i = 1,2,…,m<br>\end{aligned}<br>\right.<br>\end{equation}<br>因此需要利用拉格朗日方法来对分量进行估计<br>构造拉格朗日目标函数如下：<br>\begin{equation}<br>Lagrange = log\mathcal{L}(\mu,\Sigma,C) + \lambda\left(\sum_{j=0}^{C}p(C_j)-1 \right)<br>\end{equation}<br>对目标分量求偏微分得到<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial}{\partial p(C_k)}Lagrange &amp;= \frac{\partial}{\partial p(C_k)}log\mathcal{L}(\mu,\Sigma,C) + \lambda\\<br>&amp;=\sum_{i=0}^{m}\frac{1}{p(C_k)}p(C_k|x_i)+\lambda<br>\end{aligned}<br>\end{equation}<br>对目标函数取0，得到<br>\begin{equation}<br>\lambda = -\frac{\sum_{i=0}^{m}p(C_k|x_i)}{p(C_k)}<br>\end{equation}<br>由于$\sum_{j=0}^{C}p(C_j)=1$,那么<br>\begin{equation}<br>\sum_{k=0}^{C}p(C_k)= \sum_{k=0}^{C}-\frac{\sum_{i=0}^{m}p(C_k|x_i)}{\lambda} =1<br>\end{equation}<br>于是得到<br>\begin{equation}<br>\lambda = -\sum_{k=0}^{C}\sum_{i=0}^{m}p(C_k|x_i) = -m<br>\end{equation}<br>因此整理得到<br>\begin{equation}<br>p(C_k) = \frac{\sum_{i=0}^{m}p(C_k|x_i)}{m}<br>\end{equation}</p>
@@ -407,7 +439,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:43:42+08:00">
                 2017-06-22
@@ -419,6 +451,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
+                    <span itemprop="name">Signal Processing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -527,7 +581,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:32:36+08:00">
                 2017-06-22
@@ -539,6 +593,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
+                    <span itemprop="name">Signal Processing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -638,7 +714,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-09T12:34:28+08:00">
                 2017-06-09
@@ -766,11 +842,20 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
           
 
           
@@ -820,7 +905,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
