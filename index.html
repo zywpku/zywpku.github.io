@@ -201,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -211,7 +211,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -254,6 +254,237 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Z变换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="魏榆小生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="微雨潇潇">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/22/Z变换/" itemprop="url">Z变换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:43:42+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：<br><a href="http://iiscs.wssu.edu/drupal/node/2572" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2572</a><br><a href="http://iiscs.wssu.edu/drupal/node/2573" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2573</a><br>补充材料源自：<br><a href="http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm" target="_blank" rel="external">http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm</a><br>Z变换可以看成是傅里叶变换的变种(即傅里叶变换是收敛域在单位圆上的Z变换)。根据序列的形式，Z变换可以分为有限长序列Z变换，右边序列Z变换，左边序列Z变换，双边Z变换。</p>
+<h2 id="有限长序列Z变换"><a href="#有限长序列Z变换" class="headerlink" title="有限长序列Z变换"></a>有限长序列Z变换</h2><p>有限长序列是指在有限区间 $n_1\leq n\leq n_2$ 序列具有非零值，在此区间外，序列值皆为零。有限长序列Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{n_2}x(n)z^{-n}<br>\end{equation}<br>由级数的相关知识可知，其收敛域包含区间 $0&lt;|z|&lt;\infty$。<br>如果$n_1\geq 0$, 收敛域为$0&lt;|z|\leq \infty$;<br>如果$n_2\leq 0$, 收敛域为$0\leq |z| &lt; \infty$。</p>
+<h2 id="右边序列Z变换"><a href="#右边序列Z变换" class="headerlink" title="右边序列Z变换"></a>右边序列Z变换</h2><p>右边序列是指在$n\geq n_1$时，x(n)有值，在$n＜n_1$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x-}$以外的Z平面，即$Z&gt;R_{x-}$，如下图所示。<br><img src="/2017/06/22/Z变换/右边序列Z.jpg" alt="右边序列Z"></p>
+<h2 id="左边序列Z变换"><a href="#左边序列Z变换" class="headerlink" title="左边序列Z变换"></a>左边序列Z变换</h2><p>左边序列是指在$n\leq n_2$时，x(n)有值，$n＞n_2$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{n_2}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x+}$以内的Z平面，即$Z&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/左边序列Z.jpg" alt="左边序列Z"></p>
+<h2 id="双边Z变换"><a href="#双边Z变换" class="headerlink" title="双边Z变换"></a>双边Z变换</h2><p>这类序列是指n为任意值时x(n)皆有值的序列，其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>双边序列的收敛域为$R_{x-}&lt;|Z|&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/双边Z变换.jpg" alt="双边Z变换"> </p>
+<h2 id="定义及推理"><a href="#定义及推理" class="headerlink" title="定义及推理"></a>定义及推理</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>现考虑最一般的形式，双边Z变换。重新观察Z变换：<br>\begin{equation}<br>X(z)=\mathcal{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这里，z是复数，用极坐标的形式对其进行表示如下：<br>\begin{equation}<br>z = re^{j\Omega},\quad r\geq 0,\quad -\pi&lt; \Omega \leq \pi<br>\end{equation}<br>所以<br>\begin{equation}<br>X(z) = \sum_{n=-\infty}^{\infty}x(n)r^{-n}e^{-j\Omega n}<br>\end{equation}<br>当$r=1$时，对应DTFT。</p>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>考虑序列$x_1[n] = a^nu[n]$。如果$|a|&gt;1$，其傅里叶变换不存在。然而，对于任意的a, 当$r&gt;|a|$时, 级数$x[n]r^{-n}$绝对可和，此时<br>\begin{equation}<br>X_1(z) = \sum_{n=0}^{\infty}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&gt;|a|<br>\end{equation}</p>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>考虑序列$x_2[n]=-a^nu[-n-1]$,当$|a|&lt;1$时，其DTFT不存在。然而对于任意a,只要$r&lt;|a|$,级数$x[n]r^{-n}$绝对可和, 此时<br>\begin{equation}<br>X_1(z) = \sum_{n=-\infty}^{-1}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&lt;|a|<br>\end{equation}<br>从以上两个示例可以看出，即使Z变换的形式相同，但最终其决定作用的是其收敛域（region of convergence, ROC）。另外从其表示形式引申，可以将Z变换重新表示如下：<br>\begin{equation}<br>X(z) = \frac{Q(z)}{P(z)}<br>\end{equation}<br>对于以上公式，分别另分子，分母等于零；求得的值分别为零点和极点。收敛半径在零点和极点之间。</p>
+<h3 id="逆Z变换"><a href="#逆Z变换" class="headerlink" title="逆Z变换"></a>逆Z变换</h3><p>逆逆Z变换的形式如下（这里不做推倒）：<br>\begin{equation}<br>x[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}X(z)z^nd\omega,\quad z=\hat{r}e^{j\omega}<br>\end{equation}<br>其中，$\hat{r}$用来表示收敛域。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Wiener-Filter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="魏榆小生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="微雨潇潇">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/22/Wiener-Filter/" itemprop="url">Wiener Filter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:32:36+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -283,7 +514,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-09T12:34:28+08:00">
                 2017-06-09
@@ -410,8 +641,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -465,7 +696,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -610,6 +841,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
