@@ -93,13 +93,18 @@
 
 
 
+<meta name="description" content="Introduction维纳滤波：在线性时不变系统中，采用最小均方误差（minimum mean-square-error, MMSE）来评估广义平稳(Wide-sense stationary,WSS)随机信号的过程。在传统方法中可以采用维纳滤波进行图像去噪和去模糊，但其效果并不如人意。此处介绍维纳滤波只因其简单有效的模型思想。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wiener Filter">
 <meta property="og:url" content="http://yoursite.com/2017/06/22/Wiener-Filter/index.html">
 <meta property="og:site_name" content="微雨潇潇">
-<meta property="og:updated_time" content="2017-06-22T10:32:11.360Z">
+<meta property="og:description" content="Introduction维纳滤波：在线性时不变系统中，采用最小均方误差（minimum mean-square-error, MMSE）来评估广义平稳(Wide-sense stationary,WSS)随机信号的过程。在传统方法中可以采用维纳滤波进行图像去噪和去模糊，但其效果并不如人意。此处介绍维纳滤波只因其简单有效的模型思想。">
+<meta property="og:image" content="http://yoursite.com/2017/06/22/Wiener-Filter/MMSE.png">
+<meta property="og:updated_time" content="2017-06-25T05:44:17.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Wiener Filter">
+<meta name="twitter:description" content="Introduction维纳滤波：在线性时不变系统中，采用最小均方误差（minimum mean-square-error, MMSE）来评估广义平稳(Wide-sense stationary,WSS)随机信号的过程。在传统方法中可以采用维纳滤波进行图像去噪和去模糊，但其效果并不如人意。此处介绍维纳滤波只因其简单有效的模型思想。">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/22/Wiener-Filter/MMSE.png">
 
 
 
@@ -353,7 +358,11 @@
       
 
       
-        
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>维纳滤波：在线性时不变系统中，采用最小均方误差（minimum mean-square-error, MMSE）来评估广义平稳(Wide-sense stationary,WSS)随机信号的过程。在传统方法中可以采用维纳滤波进行图像去噪和去模糊，但其效果并不如人意。此处介绍维纳滤波只因其简单有效的模型思想。<br><a id="more"></a><br>输入：一组WSS信号$x[n]$;<br>输出：经过一个LTI系统后，输出为$\hat{y}[n]$；<br>目标输出： $y[n]$;<br>目的：保证$\hat{y}[n]$与$y[n]$的均方误差最小情况下，确定系统响应, 如下图所示。<br><img src="/2017/06/22/Wiener-Filter/MMSE.png" alt="MMSE"><br>我们定义输出误差如下:<br>\begin{equation}<br>e[n]\overset{\Delta}{=} \hat{y}[n]-y[n]<br>\end{equation}<br>而优化函数是找到使均方误差最小的系统响应，如下公式所示：<br>\begin{equation}<br>\operatorname*{min}\limits_{h[\cdot]}\epsilon = E\{e^2[n]\}<br>\end{equation}<br>考虑最简单的噪声模型:<br>\begin{equation}<br>x[n] = y[n] +  \mu [n]<br>\end{equation}<br>这种情况下，我们可以将其视为简单的滤波问题。</p>
+<h1 id="Non-causal-DT-Wiener-Filter"><a href="#Non-causal-DT-Wiener-Filter" class="headerlink" title="Non-causal DT Wiener Filter"></a>Non-causal DT Wiener Filter</h1><p>我们将均方误差展开如下<br>\begin{equation}<br>\epsilon = E\left\{<br>\left(\sum_{k=-\infty}^{+\infty}h[k]x[n-k]-y[n]\right)^2<br>\right\}<br>\end{equation}<br>对系统响应求偏微分得到<br>\begin{equation}<br>\frac{\partial \epsilon}{\partial h[m]} = E<br>\left\{<br>2\left( \sum_{k=-\infty}^{+\infty}h[k]x[n-k]-y[n] \right)x[n-m]<br>\right\}<br>=0<br>\end{equation}<br>以上公式表明：<br>\begin{equation}<br>E\{e[n]x[n-m]\}=0,\quad 或者 \quad R_{ex}[m] = 0<br>\end{equation}<br>这说明，经过优化响应之后，输出误差与输入信号服从正交原则。<br>注意到<br>\begin{equation}<br>\begin{aligned}<br>R_{ex}[m] &amp;= E\{e[n]x[n-m]\}\\<br>&amp;= E\{(\hat{y}[n]-y[n])x[n-m]\}\\<br>&amp;= R_{\hat{y}x}[m]-R_{yx}[m]<br>\end{aligned}<br>\end{equation}<br>结合优化响应$R_{ex}[m] = 0$, 可以得到正交原则的另一种表述:<br>\begin{equation}<br>R_{\hat{y}x}=R_{yx}<br>\end{equation}<br>换句话说, 对于优化系统，输入与输出的互相关（cross-correlation） 等于 输入与目标输出的互相关。</p>
+<h2 id="Inference-1"><a href="#Inference-1" class="headerlink" title="Inference 1"></a>Inference 1</h2><p>结合以上分析，我们在离散域对整个系统响应求偏微分得到：<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial \epsilon}{\partial h} &amp;= 2E<br>\left\{<br>\left( \sum_{m=-\infty}^{+\infty}h[m]x[n-m]-y[n] \right)\sum_{j=-\infty}^{\infty}x[n-j]<br>\right\}\\<br>&amp;= 2E<br>\left\{<br>\sum_{m=-\infty}^{+\infty}h[m]\sum_{j=-\infty}^{\infty}x[n-j]x[n-m]-\sum_{j=-\infty}^{\infty}y[n]x[n-j]<br>\right\}\\<br>&amp;=2\sum_{m=-\infty}^{\infty}h[m]E<br>\left\{<br>\sum_{j=-\infty}^{\infty}x[n-j]x[n-m]<br>\right\}-2E<br>\left\{<br>\sum_{j=-\infty}^{\infty}y[n]x[n-j]<br>\right\}\\<br>&amp;=2\sum_{m=-\infty}^{\infty}h[m]R_{xx}[j-m]-2R_{yx}[j]<br>\end{aligned}<br>\end{equation}<br>令偏微分为零得到<br>\begin{equation}<br>R_{yx}[j]=\sum_{m=-\infty}^{\infty}h[m]R_{xx}[j-m]<br>\end{equation}<br>以上公式称作维纳霍夫方程（Wiener-Hopf equation）。由数理统计知识可知<br>\begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;R_{yx}[m] = R_{yy}[m]+R_{y\mu}[m]\\<br>&amp;R_{xx}[m] = R_{yy}[m]+R_{y\mu}[m]+R_{\mu y}[m]+R_{\mu \mu}[m]<br>\end{aligned}<br>\right.<br>\end{equation}<br>如果$y$与$\mu$相互独立，那么<br>\begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;R_{yx}[m] = R_{yy}[m]\\<br>&amp;R_{xx}[m] = R_{yy}[m]+R_{\mu \mu}[m]<br>\end{aligned}<br>\right.<br>\end{equation}<br>我们将维纳霍夫方程进行简写得到<br>\begin{equation}<br>R_{yx}[m]=h[m]\ast R_{xx}[m]<br>\end{equation}<br>将维纳霍夫方程进行Z变换得到<br>\begin{equation}<br>H(z) = \frac{S_{yx}(z)}{S_{xx}(z)}=\frac{S_{yx}(z)}{S_{yy}(z)+S_{y\mu}(z)}<br>\end{equation}<br>由此可知，当噪声为零时$H(z)=1$; 当信号为0时$H(z)=0$.<br>假设h是一个FIR系统（其序列长度为N），就可得到N个线性方程组，用矩阵表示如下：<br>\begin{equation}<br>\left[<br>{\begin{matrix}R_{xx}[0]&amp;R_{xx}[-1]&amp;\cdots &amp;R_{xx}[1-N]\\<br>R_{xx}[1]&amp;R_{xx}[0]&amp;\cdots &amp;R_{xx}[2-N]\\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\<br>R_{xx}[N-1]&amp;R_{xx}[N-2]&amp;\cdots &amp;R_{xx}[0]<br>\end{matrix}}\right]<br>\begin{bmatrix}<br>h[0]\\<br>h[1]\\<br>\vdots\\<br>h[N-1]<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>R_{yx}[0]\\<br>R_{yx}[1]\\<br>\vdots\\<br>R_{yx}[N-1]<br>\end{bmatrix}<br>\end{equation}</p>
+<h2 id="Inference-2"><a href="#Inference-2" class="headerlink" title="Inference 2"></a>Inference 2</h2><p>以上是采用求偏微分的方式来获得最优系统响应。接下来重新考虑最小均方误差。<br>\begin{equation}<br>e^2[n]=\hat{y}[n]^2+y[n]^2-\hat{y}[n]y[n]-y[n]\hat{y}[n]=y[n]^2-\hat{y}[n]y[n]+e[n]\hat{y}[n]<br>\end{equation}<br>对等式两边分别求期望(前面已经推导出输入与输出误差满足正交原则，我们假设输出与输出误差同样满足正交原则)得到<br>\begin{equation}<br>R_{ee}[m] = R_{yy}[m]-R_{\hat{y}y}[m]=R_{yy}[m]-h[m]\ast R_{xy}[m]<br>\end{equation}<br>直接求最小均方误差得到：<br>\begin{equation}<br>\begin{aligned}<br>\epsilon &amp;= MMSE = E\{e^2[n]\}=R_{ee}[0]\\<br>&amp;= \frac{1}{2\pi}\int_{-\pi}^{\pi}S_{ee}d\Omega\\<br>&amp;= \frac{1}{2\pi}\int_{-\pi}^{\pi}(S_{yy}-HS_{xy})d\Omega\\<br>&amp;= \frac{1}{2\pi}\int_{-\pi}^{\pi}S_{yy}(1-\frac{S_{yx}S_{xy}}{S_{yy}S_{xx}})d\Omega\\<br>&amp;= \frac{1}{2\pi}\int_{-\pi}^{\pi}S_{yy}(1-\rho_{yx}\rho_{yx}^{\ast})d\Omega<br>\end{aligned}<br>\end{equation}<br>其中$\rho_{yx}(e^{j\Omega})$表示频域互相关系数：<br>\begin{equation}<br>\rho_{yx}(e^{j\Omega})=\frac{S_{yx}(e^{j\Omega})}{\sqrt{S_{yy}(e^{j\Omega})S_{xx}(e^{j\Omega})}}<br>\end{equation}<br>这与统计学中的协方差对应。</p>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><h2 id="Denoise"><a href="#Denoise" class="headerlink" title="Denoise"></a>Denoise</h2><h2 id="Deblur"><a href="#Deblur" class="headerlink" title="Deblur"></a>Deblur</h2>
       
     </div>
 
@@ -444,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -498,6 +516,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Non-causal-DT-Wiener-Filter"><span class="nav-number">2.</span> <span class="nav-text">Non-causal DT Wiener Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inference-1"><span class="nav-number">2.1.</span> <span class="nav-text">Inference 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inference-2"><span class="nav-number">2.2.</span> <span class="nav-text">Inference 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analysis"><span class="nav-number">3.</span> <span class="nav-text">Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Denoise"><span class="nav-number">3.1.</span> <span class="nav-text">Denoise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deblur"><span class="nav-number">3.2.</span> <span class="nav-text">Deblur</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
