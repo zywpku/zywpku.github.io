@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EM算法推导">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/EM算法推导/index.html">
+<meta property="og:site_name" content="微雨潇潇">
+<meta property="og:description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
+<meta property="og:updated_time" content="2017-06-29T14:16:45.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EM算法推导">
+<meta name="twitter:description" content="EM算法详解很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/22/EM算法推导/"/>
+
+
+
+
+
+  <title>EM算法推导 | 微雨潇潇</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">微雨潇潇</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/EM算法推导/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="魏榆小生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="微雨潇潇">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EM算法推导</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T16:34:42+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> Views
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>times
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="EM算法详解"><a href="#EM算法详解" class="headerlink" title="EM算法详解"></a>EM算法详解</h1><p>很多时候，我们对一个问题的理解表现为只知其然，而不知其所以然。这也就是为什么有些情况下，我们穷尽全力得不到好的结果，而别人只需要改几个参数（说的有点夸张）就可达到超过预期的目的。GMM算法这种老掉牙的东西在深度学习被炒的热火朝天的今日好像已经逐渐淡出了我们的视线；不全然，就好比“降龙十八掌”，从乔峰手里使出如亢龙一般力道无穷，而从宋青书手里使出就如暴殄天物一般尚欠火候，究其原因，还是功力尚浅，即使是人人熟知的“太祖长拳”在乔峰手里也能耍的虎虎生风，这不得不让人叹然。我们每个人都想做本职行业里的英雄，但是现今跟风严重，真正静下心来的又能有几人，我们只想打着科班出身的名号混入所谓国内排名多少多少的研究机构从事在最火的研究领域，却不曾想过能力与研究地位的不匹配最终让我们变得猫不是猫，虎也不是虎。吐槽到此为止……言归正传，这次觉得有必要做一次详细的EM算法推倒，一方面是对工作中遇到问题的总结，另一方也加深对基础问题的理解。<br><a id="more"></a></p>
+<h2 id="GMM模型"><a href="#GMM模型" class="headerlink" title="GMM模型"></a>GMM模型</h2><p>假设有一个数据样本$\{x_1,x_2,…,x_m\}$,其中每一个样本数据$x_i$都是一个$d\times 1$的列向量。现在我们想要最大限度的求得样本数据的分布情况，问题已经清晰，接下来就是要建立模型。我们假设这组样本数据服从GMM（高斯混合模型），我们需要根据数据确定每一个高斯模型的具体参数。</p>
+<h2 id="EM算法推导"><a href="#EM算法推导" class="headerlink" title="EM算法推导"></a>EM算法推导</h2><p>假设样本数据是由C个高斯分布混合而成，并且第k个高斯分布符合多项式分布，我们可以设定高斯的先验概率<br>\begin{equation}<br>p(C_k) = \phi_k<br>\end{equation}<br>而第$i$个样本数据在第k个高斯分布下的概率为<br>\begin{equation}<br>p(x_i|C_k) \sim \frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}<br>\end{equation}<br>我们可以得到样本$i$在GMM模型下的概率密度函数<br>\begin{equation}<br>p(x_i,C) = \sum_{j=0}^{C}p(C_j)p(x_i|C_j)<br>\end{equation}<br>假设每一个样本数据都独立同分布，我们可以得到这m个观测样本的对数似然函数<br>\begin{equation}<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\mathcal{p}(x_i,C))\\<br>log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j))<br>\end{equation}</p>
+<h3 id="优化均值期望-mu-k"><a href="#优化均值期望-mu-k" class="headerlink" title="优化均值期望$\mu_k$"></a>优化均值期望$\mu_k$</h3><p>我们$\mathcal{L}$求关于$\mu_k$的偏微分<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial }{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) &amp;= \sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i,C)\\<br>&amp;=\sum_{i=0}^{m}\frac{1}{p(x_i,C)}\frac{\partial}{\partial \mu_k}\sum_{j=0}^{C}p(C_j)p(x_i|C_j)\\<br>&amp;= \sum_{i=0}^{m}\frac{p(C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}p(x_i|C_k)<br>\end{aligned}<br>\end{equation}<br>利用复合函数的求导性质，我们可将上式变形得到<br>\begin{equation}<br>= \sum_{i=0}^{m}\frac{p(C_k)p(x_i|C_k)}{p(x_i,C)}\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>因此整理得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\partial}{\partial \mu_k}log(p(x_i|C_k))<br>\end{equation}<br>对多元正太分布函数取对数得到<br>\begin{equation}<br>\begin{aligned}<br>logp(x_i|C_k) &amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}\right)\\<br>&amp;= log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)<br>\end{aligned}<br>\end{equation}<br>对多元正态分布取对数后求第k个分量均值的偏倒数<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}log\left(\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}\right)-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\\<br>=&amp;\frac{\partial}{\partial \mu_k}\left(-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)\right)<br>\end{aligned}<br>\end{equation}<br>由于<br>\begin{equation}<br>\frac{\partial}{\partial Y}\left(Y^T\Sigma^{-1}Y\right) = \Sigma^{-1}Y+(\Sigma^{-1})^TY<br>\end{equation}<br>因此可以得到<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log(p(x_i|C_k)=\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>\begin{equation}<br>\frac{\partial}{\partial \mu_k}log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}p(C_k|x_i)\frac{\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)(x_i-\mu_k)}{2}<br>\end{equation}<br>我们要最大化释然函数，必然要求对各个估计参数的偏导要等于0，其中，<br>\begin{equation}<br>\left(\Sigma^{-1}+(\Sigma^{-1})^T\right)\neq  0<br>\end{equation}<br>得到<br>\begin{equation}<br>\sum_{i=0}^{m}p(C_k|x_i)(x_i-\mu_k) = 0<br>\end{equation}<br>化解得出<br>\begin{equation}<br>\mu_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)x_i}{\sum_{i=0}^{m}p(C_k|x_i)}<br>\end{equation}</p>
+<h3 id="优化方差-Sigma-k"><a href="#优化方差-Sigma-k" class="headerlink" title="优化方差$\Sigma_k$"></a>优化方差$\Sigma_k$</h3><p>\begin{equation}<br>\frac{\partial}{\partial \Sigma_k}log\mathcal{L}(\mu,\Sigma,C)= \sum_{i=0}^{m}\frac{p(C_k)p(x_i|C_k)}{p(x_i,C)}\frac{\partial}{\partial \Sigma_k}log(p(x_i|C_k))<br>\end{equation}<br>行列式对 其对应的矩阵求微分有如下性质：<br>\begin{equation}<br>\frac{\mathrm{d} }{\mathrm{d} A}log|A| = (A^{-1})^T<br>\end{equation}<br>另外一个性质<br>\begin{equation}<br>\begin{aligned}<br>&amp;tr(ABC) = tr(CAB) = tr(BCA)\\<br>&amp;\frac{\mathrm{d} }{\mathrm{d} A}tr(BA) = B^T\\<br>&amp;\frac{\mathrm{d} }{\mathrm{d} A}tr(A^{-1}B) = -(A^{-1})^TB(A^{-1})^T<br>\end{aligned}<br>\end{equation}<br>所以整理得到<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \Sigma_k}log(p(x_i|C_k)\\<br>=&amp;-\frac{1}{2}(\Sigma_k^{-1})^T+\frac{1}{2}(\Sigma_k^{-1})^T(x_i-\mu_k)(x_i-\mu_k)^T(\Sigma_k^{-1})^T<br>\end{aligned}<br>\end{equation}<br>因此<br>\begin{equation}<br>\begin{aligned}<br>&amp;\frac{\partial}{\partial \Sigma_k}log\mathcal{L}(\mu,\Sigma,C)\\<br>=&amp;\sum_{i=0}^{m}p(C_k|x_i)\left(-\frac{1}{2}(\Sigma_k^{-1})^T+\frac{1}{2}(\Sigma_k^{-1})^T(x_i-\mu_k)(x_i-\mu_k)^T(\Sigma_k^{-1})^T\right)<br>\end{aligned}<br>\end{equation}<br>对偏微分取0求得<br>\begin{equation}<br>\Sigma_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)\left((x_i-\mu_k)(x_i-\mu_k)^T\right)}{\sum_{i=0}^{m}p(C_k|x_i)}<br>\end{equation}</p>
+<h3 id="优化各高斯分量的权重-p-C-k"><a href="#优化各高斯分量的权重-p-C-k" class="headerlink" title="优化各高斯分量的权重$p(C_k)$"></a>优化各高斯分量的权重$p(C_k)$</h3><p>现在来看在各个分量的条件下要使得释然函数最大，这是一个优化问题<br>\begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;log\mathcal{L}(\mu,\Sigma,C) = \sum_{i=0}^{m}log(\sum_{j=0}^{C}p(C_j)p(x_i|C_j));\\<br>&amp;p(C_j)\geq0,j = 1,2,…,C;\\<br>&amp;\sum_{j=0}^{C}p(C_j)=1;\\<br>&amp;\sum_{j=0}^{C}p(C_j|x_i) =1; i = 1,2,…,m<br>\end{aligned}<br>\right.<br>\end{equation}<br>因此需要利用拉格朗日方法来对分量进行估计<br>构造拉格朗日目标函数如下：<br>\begin{equation}<br>Lagrange = log\mathcal{L}(\mu,\Sigma,C) + \lambda\left(\sum_{j=0}^{C}p(C_j)-1 \right)<br>\end{equation}<br>对目标分量求偏微分得到<br>\begin{equation}<br>\begin{aligned}<br>\frac{\partial}{\partial p(C_k)}Lagrange &amp;= \frac{\partial}{\partial p(C_k)}log\mathcal{L}(\mu,\Sigma,C) + \lambda\\<br>&amp;=\sum_{i=0}^{m}\frac{1}{p(C_k)}p(C_k|x_i)+\lambda<br>\end{aligned}<br>\end{equation}<br>对目标函数取0，得到<br>\begin{equation}<br>\lambda = -\frac{\sum_{i=0}^{m}p(C_k|x_i)}{p(C_k)}<br>\end{equation}<br>由于$\sum_{j=0}^{C}p(C_j)=1$,那么<br>\begin{equation}<br>\sum_{k=0}^{C}p(C_k)= \sum_{k=0}^{C}-\frac{\sum_{i=0}^{m}p(C_k|x_i)}{\lambda} =1<br>\end{equation}<br>于是得到<br>\begin{equation}<br>\lambda = -\sum_{k=0}^{C}\sum_{i=0}^{m}p(C_k|x_i) = -m<br>\end{equation}<br>因此整理得到<br>\begin{equation}<br>p(C_k) = \frac{\sum_{i=0}^{m}p(C_k|x_i)}{m}<br>\end{equation}</p>
+<h3 id="总结各优化分量"><a href="#总结各优化分量" class="headerlink" title="总结各优化分量"></a>总结各优化分量</h3><p>\begin{equation}<br>\begin{aligned}<br>&amp;\mu_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)x_i}{\sum_{i=0}^{m}p(C_k|x_i)}\\<br>&amp;\Sigma_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)\left((x_i-\mu_k)(x_i-\mu_k)^T\right)}{\sum_{i=0}^{m}p(C_k|x_i)}\\<br>&amp;p(C_k) = \frac{\sum_{i=0}^{m}p(C_k|x_i)}{m}\\<br>其中，&amp;p(C_k|x_i) = \frac{p(x_i|C_k)p(C_k)}{\sum_{j =0}^{C}p(x_i|C_j)p(C_j)}<br>\end{aligned}<br>\end{equation}<br>由最后两个公式可以看出，似然函数的优化需要用迭代的方法解决。</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><ol>
+<li>构造初始值<br>\begin{equation}<br>\phi_k = \frac{1}{C},\mu_k = \mathbf{I},\Sigma_k = \mathbf{I},k = 1,2,…,C<br>\end{equation}</li>
+<li>计算后验概率(第$i$个样本数据由第$k$个高斯分量生成的概率)<br>\begin{equation}<br>p(C_k|x_i) = \frac{\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_k|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_k)^T{\Sigma_k^{-1}}(x_i-\mu_k)}\cdot\phi_k}{\sum_{j=0}^{C}\frac{1}{(2\pi)^{\frac{1}{2}}|\Sigma_j|^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_j)^T{\Sigma_j^{-1}}(x_i-\mu_j)}\cdot\phi_j}<br>\end{equation}</li>
+<li>更新各优化分量<br>\begin{equation}<br>\begin{aligned}<br>&amp;\mu_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)x_i}{\sum_{i=0}^{m}p(C_k|x_i)}\\<br>&amp;\Sigma_k = \frac{\sum_{i=0}^{m}p(C_k|x_i)\left((x_i-\mu_k)(x_i-\mu_k)^T\right)}{\sum_{i=0}^{m}p(C_k|x_i)}\\<br>&amp;\phi_k = p(C_k) = \frac{\sum_{i=0}^{m}p(C_k|x_i)}{m}<br>\end{aligned}<br>\end{equation}</li>
+<li>跳转到第二步，直到满足收敛条件。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/22/Z变换/" rel="next" title="Z变换">
+                <i class="fa fa-chevron-left"></i> Z变换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/22/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="魏榆小生" />
+          <p class="site-author-name" itemprop="name">魏榆小生</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EM算法详解"><span class="nav-number">1.</span> <span class="nav-text">EM算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GMM模型"><span class="nav-number">1.1.</span> <span class="nav-text">GMM模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM算法推导"><span class="nav-number">1.2.</span> <span class="nav-text">EM算法推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化均值期望-mu-k"><span class="nav-number">1.2.1.</span> <span class="nav-text">优化均值期望$\mu_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化方差-Sigma-k"><span class="nav-number">1.2.2.</span> <span class="nav-text">优化方差$\Sigma_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化各高斯分量的权重-p-C-k"><span class="nav-number">1.2.3.</span> <span class="nav-text">优化各高斯分量的权重$p(C_k)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结各优化分量"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结各优化分量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">1.3.</span> <span class="nav-text">算法流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">魏榆小生</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> Vistors
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> Total visited
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+</body>
+</html>

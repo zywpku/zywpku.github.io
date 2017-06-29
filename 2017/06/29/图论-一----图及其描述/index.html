@@ -93,20 +93,18 @@
 
 
 
-<meta name="description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
+<meta name="description" content="佛语有云“风未动，云也未动，是人的心在动而已”。其实很久之前就想整理一些图理论方面的知识，但在各种热潮的充斥下，人的心很难真正安静下来。现如今，研究和技术方面的追本溯源好像已经被大家否认，毕竟用一个接口解决的问题何必深究。我并不否认拿来主义的现实效益，记得中学时候，有一位老师曾和我们说过”你享受什么样的利益，就要承担因此带来的后果“，在我看来，技术可以是别人的，但需由自己制造……">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Z变换">
-<meta property="og:url" content="http://yoursite.com/2017/06/22/Z变换/index.html">
+<meta property="og:title" content="图论(一)---图及其描述">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/图论-一----图及其描述/index.html">
 <meta property="og:site_name" content="微雨潇潇">
-<meta property="og:description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/右边序列Z.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/左边序列Z.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/双边Z变换.jpg">
-<meta property="og:updated_time" content="2017-06-22T11:16:36.183Z">
+<meta property="og:description" content="佛语有云“风未动，云也未动，是人的心在动而已”。其实很久之前就想整理一些图理论方面的知识，但在各种热潮的充斥下，人的心很难真正安静下来。现如今，研究和技术方面的追本溯源好像已经被大家否认，毕竟用一个接口解决的问题何必深究。我并不否认拿来主义的现实效益，记得中学时候，有一位老师曾和我们说过”你享受什么样的利益，就要承担因此带来的后果“，在我看来，技术可以是别人的，但需由自己制造……">
+<meta property="og:image" content="http://yoursite.com/2017/06/29/图论-一----图及其描述/matrix.png">
+<meta property="og:updated_time" content="2017-06-29T17:14:09.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Z变换">
-<meta name="twitter:description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
-<meta name="twitter:image" content="http://yoursite.com/2017/06/22/Z变换/右边序列Z.jpg">
+<meta name="twitter:title" content="图论(一)---图及其描述">
+<meta name="twitter:description" content="佛语有云“风未动，云也未动，是人的心在动而已”。其实很久之前就想整理一些图理论方面的知识，但在各种热潮的充斥下，人的心很难真正安静下来。现如今，研究和技术方面的追本溯源好像已经被大家否认，毕竟用一个接口解决的问题何必深究。我并不否认拿来主义的现实效益，记得中学时候，有一位老师曾和我们说过”你享受什么样的利益，就要承担因此带来的后果“，在我看来，技术可以是别人的，但需由自己制造……">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/29/图论-一----图及其描述/matrix.png">
 
 
 
@@ -134,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/22/Z变换/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/图论-一----图及其描述/"/>
 
 
 
 
 
-  <title>Z变换 | 微雨潇潇</title>
+  <title>图论(一)---图及其描述 | 微雨潇潇</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
@@ -269,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Z变换/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/图论-一----图及其描述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="魏榆小生">
@@ -286,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Z变换</h1>
+          <h1 class="post-title" itemprop="name headline">图论(一)---图及其描述</h1>
         
 
         <div class="post-meta">
@@ -298,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:43:42+08:00">
-                2017-06-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-29T22:14:57+08:00">
+                2017-06-29
               </time>
             
 
@@ -321,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
-                    <span itemprop="name">Signal Processing</span>
+                  <a href="/categories/Graph-Theory/" itemprop="url" rel="index">
+                    <span itemprop="name">Graph Theory</span>
                   </a>
                 </span>
 
@@ -360,15 +358,12 @@
       
 
       
-        <p>本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：<br><a href="http://iiscs.wssu.edu/drupal/node/2572" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2572</a><br><a href="http://iiscs.wssu.edu/drupal/node/2573" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2573</a><br>补充材料源自：<br><a href="http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm" target="_blank" rel="external">http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm</a><br>Z变换可以看成是傅里叶变换的变种(即傅里叶变换是收敛域在单位圆上的Z变换)。根据序列的形式，Z变换可以分为有限长序列Z变换，右边序列Z变换，左边序列Z变换，双边Z变换。<br><a id="more"></a></p>
-<h2 id="有限长序列Z变换"><a href="#有限长序列Z变换" class="headerlink" title="有限长序列Z变换"></a>有限长序列Z变换</h2><p>有限长序列是指在有限区间 $n_1\leq n\leq n_2$ 序列具有非零值，在此区间外，序列值皆为零。有限长序列Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{n_2}x(n)z^{-n}<br>\end{equation}<br>由级数的相关知识可知，其收敛域包含区间 $0&lt;|z|&lt;\infty$。<br>如果$n_1\geq 0$, 收敛域为$0&lt;|z|\leq \infty$;<br>如果$n_2\leq 0$, 收敛域为$0\leq |z| &lt; \infty$。</p>
-<h2 id="右边序列Z变换"><a href="#右边序列Z变换" class="headerlink" title="右边序列Z变换"></a>右边序列Z变换</h2><p>右边序列是指在$n\geq n_1$时，x(n)有值，在$n＜n_1$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x-}$以外的Z平面，即$Z&gt;R_{x-}$，如下图所示。<br><img src="/2017/06/22/Z变换/右边序列Z.jpg" alt="右边序列Z"></p>
-<h2 id="左边序列Z变换"><a href="#左边序列Z变换" class="headerlink" title="左边序列Z变换"></a>左边序列Z变换</h2><p>左边序列是指在$n\leq n_2$时，x(n)有值，$n＞n_2$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{n_2}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x+}$以内的Z平面，即$Z&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/左边序列Z.jpg" alt="左边序列Z"></p>
-<h2 id="双边Z变换"><a href="#双边Z变换" class="headerlink" title="双边Z变换"></a>双边Z变换</h2><p>这类序列是指n为任意值时x(n)皆有值的序列，其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>双边序列的收敛域为$R_{x-}&lt;|Z|&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/双边Z变换.jpg" alt="双边Z变换"> </p>
-<h2 id="定义及推理"><a href="#定义及推理" class="headerlink" title="定义及推理"></a>定义及推理</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>现考虑最一般的形式，双边Z变换。重新观察Z变换：<br>\begin{equation}<br>X(z)=\mathcal{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这里，z是复数，用极坐标的形式对其进行表示如下：<br>\begin{equation}<br>z = re^{j\Omega},\quad r\geq 0,\quad -\pi&lt; \Omega \leq \pi<br>\end{equation}<br>所以<br>\begin{equation}<br>X(z) = \sum_{n=-\infty}^{\infty}x(n)r^{-n}e^{-j\Omega n}<br>\end{equation}<br>当$r=1$时，对应DTFT。</p>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>考虑序列$x_1[n] = a^nu[n]$。如果$|a|&gt;1$，其傅里叶变换不存在。然而，对于任意的a, 当$r&gt;|a|$时, 级数$x[n]r^{-n}$绝对可和，此时<br>\begin{equation}<br>X_1(z) = \sum_{n=0}^{\infty}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&gt;|a|<br>\end{equation}</p>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>考虑序列$x_2[n]=-a^nu[-n-1]$,当$|a|&lt;1$时，其DTFT不存在。然而对于任意a,只要$r&lt;|a|$,级数$x[n]r^{-n}$绝对可和, 此时<br>\begin{equation}<br>X_1(z) = \sum_{n=-\infty}^{-1}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&lt;|a|<br>\end{equation}<br>从以上两个示例可以看出，即使Z变换的形式相同，但最终其决定作用的是其收敛域（region of convergence, ROC）。另外从其表示形式引申，可以将Z变换重新表示如下：<br>\begin{equation}<br>X(z) = \frac{Q(z)}{P(z)}<br>\end{equation}<br>对于以上公式，分别另分子，分母等于零；求得的值分别为零点和极点。收敛半径在零点和极点之间。</p>
-<h3 id="逆Z变换"><a href="#逆Z变换" class="headerlink" title="逆Z变换"></a>逆Z变换</h3><p>逆逆Z变换的形式如下（这里不做推倒）：<br>\begin{equation}<br>x[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}X(z)z^nd\omega,\quad z=\hat{r}e^{j\omega}<br>\end{equation}<br>其中，$\hat{r}$用来表示收敛域。</p>
+        <p>佛语有云“风未动，云也未动，是人的心在动而已”。其实很久之前就想整理一些图理论方面的知识，但在各种热潮的充斥下，人的心很难真正安静下来。现如今，研究和技术方面的追本溯源好像已经被大家否认，毕竟用一个接口解决的问题何必深究。我并不否认拿来主义的现实效益，记得中学时候，有一位老师曾和我们说过”你享受什么样的利益，就要承担因此带来的后果“，在我看来，技术可以是别人的，但需由自己制造……<br><a id="more"></a></p>
+<h1 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h1><p>A graph $G$ is an ordered pair $(V,E)$ congsisting of a set $V$ of $vertices$ and a set $E$, disjoint from $V$, of edges, together with an $incidence$-$function$ $\Psi_G$ that associates with each edge of $G$ an unordered pair of (not necessarily distinct) vertices of G.<br>\begin{equation}<br>G = (V,E)<br>\end{equation}</p>
+<h1 id="terminology"><a href="#terminology" class="headerlink" title="terminology"></a>terminology</h1><p>$-\cdot incident(关联)$：The ends of an edge are said to be incident with the edge, and $vice$ $versa$(顶点与连接它的边称作是关联的).<br>$-\cdot adjacent(邻接)$：Two vertices which are incident with a common edge are adjacnet, as are two edges which are incident with a common vertex（边两端的顶点称作是邻接的，同样，连接同一顶点的边也称作是邻接的）.<br>$-\cdot neigobours(邻点)$：Two distinct adjacent vertices are neighbours（两个不同邻接顶点称作邻点）。图$G$中，顶点 $\nu$ 的邻点用$N_G(\nu)$表示。<br>$-\cdot loop$: 连接单一顶点的边称作$loop$.<br>$-\cdot link$: 连接不同顶点的边称作$link$.<br>$-\cdot null-graph(零图)$:无边无点的图称作 $null-graph$.<br>$-\cdot trivial$:只有一个顶点的图称作$trivial$.<br>$-\cdot nontrivial$:有多个顶点的图称作$nontrivial$.<br>$-\cdot complete$-$graph(完全图)$:完全图中，任何两个顶点彼此邻接。<br>$-\cdot bipartite(双边图)$：在图$G$中，顶点集合$V$分成子集$X$和$Y$，边集合$E$中任何一边连接$X$和$Y$中的顶点。<br>$-\cdot connedted(连通图)$: A graph is connected if, for every partition of its vertex set into two nonempty<br>sets $X$ and $Y$ , there is an edge with one end in $X$ and one end in $Y$.<br>$-\cdot disconnected（非连通图）$<br>$-\cdot degree$: The degree of a vertex $v$ in a graph $G$, denoted by $d_G (v)$, is the number of edges of<br>$G$ incident with $v$, each loop counting as two edges.</p>
+<h1 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h1><p>矩阵形式：关联矩阵（incidence matrix）和邻接矩阵(adjacency matrix)<br>关联矩阵: 描述点和边的关系（即点在边中出现的次数）<br>邻接矩阵：描述点和点之间的关系（即两点是否构成边）<br>如下图所示：<br><img src="/2017/06/29/图论-一----图及其描述/matrix.png" alt="matrix"><br>M 为其关联矩阵，A为其邻接矩阵</p>
+<h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><p>对于任意图$G$,我们将其用关联矩阵表示，其中$|V|$=n, $|E|$=m<br>\begin{equation}<br>\sum_{v\in V}d(v)=2m<br>\end{equation}<br>证明：<br>观察上图中矩阵M，可以看到每列的和为2(因为一条边最多连接两个顶点),一共有m列，所以顶点度的总和为2m，证毕。</p>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><p>任何图中，具有奇数度的顶点数量总和为偶数<br>证明：<br>我们对顶点度$d(v)$取模2，有如下结果<br>\begin{equation}<br>d(v)\%2=<br>\left\{<br>\begin{aligned}<br>&amp;1，\quad d(v)-&gt;奇数\\<br>&amp;0，\quad d(v)-&gt;偶数<br>\end{aligned}<br>\right.<br>\end{equation}<br>观察以上结果，对每个顶点度取模2，并对所有结果求和，其值就为奇数度顶点的个数，用$\sum_{v\in V}\{d_{奇}(v)\%2\}$；考虑上面的定理，我们将等式中的$d(v)$表示为$d(v)=d_{奇}(v)+d_{偶}(v)$，其中，$d_{奇}(v)$表示顶度为奇数，$d_{偶}(v)$表示顶度为偶数，现在，我们考虑奇数度顶点个数的奇偶性：<br>\begin{equation}<br>\{\sum_{v\in V}\{d_{奇}(v)\%2\}\}\%2=\{\sum_{v\in V}\{d_{奇}(v)\%2\}+\{d_{偶}(v)\%2\}\}\%2=\{\sum_{v\in V}\{d(v)\%2\}\}\%2=\{\sum_{v\in V}d(v)\}\%2=0<br>\end{equation}<br>结果为偶数，证毕。</p>
 
       
     </div>
@@ -405,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/22/Wiener-Filter/" rel="next" title="Wiener Filter">
-                <i class="fa fa-chevron-left"></i> Wiener Filter
+              <a href="/2017/06/22/Linear-Discriminant-Analysis/" rel="next" title="Linear Discriminant Analysis">
+                <i class="fa fa-chevron-left"></i> Linear Discriminant Analysis
               </a>
             
           </div>
@@ -414,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/22/EM算法推导/" rel="prev" title="EM算法推导">
-                EM算法推导 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有限长序列Z变换"><span class="nav-number">1.</span> <span class="nav-text">有限长序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右边序列Z变换"><span class="nav-number">2.</span> <span class="nav-text">右边序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左边序列Z变换"><span class="nav-number">3.</span> <span class="nav-text">左边序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双边Z变换"><span class="nav-number">4.</span> <span class="nav-text">双边Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义及推理"><span class="nav-number">5.</span> <span class="nav-text">定义及推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例1"><span class="nav-number">5.1.1.</span> <span class="nav-text">示例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例2"><span class="nav-number">5.1.2.</span> <span class="nav-text">示例2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆Z变换"><span class="nav-number">5.2.</span> <span class="nav-text">逆Z变换</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Definition"><span class="nav-number">1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#terminology"><span class="nav-number">2.</span> <span class="nav-text">terminology</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Representation"><span class="nav-number">3.</span> <span class="nav-text">Representation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">4.</span> <span class="nav-text">定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推论"><span class="nav-number">4.1.</span> <span class="nav-text">推论</span></a></li></ol></li></ol></div>
             
 
           </div>
