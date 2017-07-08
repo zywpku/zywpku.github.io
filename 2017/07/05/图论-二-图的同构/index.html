@@ -93,16 +93,19 @@
 
 
 
-<meta name="description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$">
+<meta name="description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if：V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$。如果存在双向映射(bijections)$\theta:V(G)\rightarrow V(H)$以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论(二)---图的同构">
 <meta property="og:url" content="http://yoursite.com/2017/07/05/图论-二-图的同构/index.html">
 <meta property="og:site_name" content="微雨潇潇">
-<meta property="og:description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$">
-<meta property="og:updated_time" content="2017-07-05T07:49:29.023Z">
+<meta property="og:description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if：V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$。如果存在双向映射(bijections)$\theta:V(G)\rightarrow V(H)$以">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/图论-二-图的同构/isomorphisms.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/图论-二-图的同构/automorphisms.png">
+<meta property="og:updated_time" content="2017-07-08T12:21:47.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论(二)---图的同构">
-<meta name="twitter:description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$">
+<meta name="twitter:description" content="Terminology$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if：V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$。如果存在双向映射(bijections)$\theta:V(G)\rightarrow V(H)$以">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/05/图论-二-图的同构/isomorphisms.png">
 
 
 
@@ -356,7 +359,9 @@
       
 
       
-        <h1 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h1><p>$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.<br>$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$</p>
+        <h1 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h1><p>$-\cdot Identical(同构)$: 图的同构表示在两个图中，点和边完全相同。$G=H, if：V(G)=V(H),E(G)=E(H),\Psi_{G}=\Psi_{H}$.<br>$-\cdot isomorphisms(类质图)$: 类质图可以写成 $G\cong H$。如果存在双向映射(bijections)$\theta:V(G)\rightarrow V(H)$以及$\phi: E(G)\rightarrow E(H)$, 使得$\psi_G(e)=uv$，当且仅当$\psi_H(\phi(e))=\theta (u)\theta (v)$。这样的匹配关系称作图G与H类质(如下图所示)。<br><img src="/2017/07/05/图论-二-图的同构/isomorphisms.png" alt="isomorphisms"><br>$-\cdot Automorphisms(自同构)$: 自同构图表示图经过映射之后仍是图本身（The automorphisms of a graph reflect its symmetries） 如下图所示。<br><img src="/2017/07/05/图论-二-图的同构/automorphisms.png" alt="automorphisms"><br>图的自同构集合用$Aut(G)$表示, 自同构的数量用$aut(G)$表示。</p>
+<h1 id="Labelled-Graphs"><a href="#Labelled-Graphs" class="headerlink" title="Labelled Graphs"></a>Labelled Graphs</h1><p>一个 $single$ 图$G=(V,E)$的边可以看做是$\left(\begin{matrix} V\\ 2 \end{matrix}\right)$个点集排列的子集。在画这样的图时经常将边的标签忽略。<br>$-\cdot label$ $single$ $graph$: 在single图中，点有标签，边没有标签。<br>如果$|V|=n$, 那么这样的标签图共有$2^{\left(\begin{matrix} V\\ 2 \end{matrix}\right)}$个。将有$n$个点的$single$标签图用$\mathcal{G_n}$表示。<br>$\\$<br>在考虑标签图数量时，从另一种角度出发：图中的$n$个点共有$n!$中排列，考虑到图的自同构，即在经过双向映射之后，图仍为其自身；将这种重复情况排除之后，应该满足以下关系：<br>\begin{equation}<br>\sum_G \frac{n!}{aut(G)}=2^{\left(\begin{matrix} n\\ 2\end{matrix}\right)}<br>\end{equation}</p>
+<h1 id="Unlabelled-Graphs"><a href="#Unlabelled-Graphs" class="headerlink" title="Unlabelled Graphs"></a>Unlabelled Graphs</h1><p>现在考虑点和边均无标签的$unlabelled$ $single$ $graph$。这里只考虑下边界，从上面的公式可以看出，每一种标签图的点有$n!$种排列（这也就是说，每一种无标签图最多只能对应$n!$种标签图），所以无标签图的数量至少为:<br>\begin{equation}<br>\left<br>\lceil<br>{\frac{2^{\left(\begin{matrix} n\\ 2\end{matrix}\right)}}{n!}}<br>\right<br>\rceil<br>\end{equation}</p>
 
       
     </div>
@@ -521,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Terminology"><span class="nav-number">1.</span> <span class="nav-text">Terminology</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Terminology"><span class="nav-number">1.</span> <span class="nav-text">Terminology</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Labelled-Graphs"><span class="nav-number">2.</span> <span class="nav-text">Labelled Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unlabelled-Graphs"><span class="nav-number">3.</span> <span class="nav-text">Unlabelled Graphs</span></a></li></ol></div>
             
 
           </div>
