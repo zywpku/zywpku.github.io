@@ -93,20 +93,25 @@
 
 
 
-<meta name="description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
+<meta name="description" content="Polyhedral Graphs将多面体映射到图，并保持点、线之间的关联，如下图所示。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Z变换">
-<meta property="og:url" content="http://yoursite.com/2017/06/22/Z变换/index.html">
+<meta property="og:title" content="图论(三)---图结构及其构造">
+<meta property="og:url" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/index.html">
 <meta property="og:site_name" content="微雨潇潇">
-<meta property="og:description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/右边序列Z.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/左边序列Z.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/22/Z变换/双边Z变换.jpg">
-<meta property="og:updated_time" content="2017-06-22T11:16:36.183Z">
+<meta property="og:description" content="Polyhedral Graphs将多面体映射到图，并保持点、线之间的关联，如下图所示。">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/polyhedral.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/hypergraph.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/incidence%20graph.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/line%20graph.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/union%20intersection.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/Cartesian.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/digraph.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/ingraph.png">
+<meta property="og:updated_time" content="2017-07-09T11:35:12.700Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Z变换">
-<meta name="twitter:description" content="本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：http://iiscs.wssu.edu/drupal/node/2572http://iiscs.wssu.edu/drupal/node/2573补充材料源自：http://wlsyzx.yzu.edu.cn/kcwz">
-<meta name="twitter:image" content="http://yoursite.com/2017/06/22/Z变换/右边序列Z.jpg">
+<meta name="twitter:title" content="图论(三)---图结构及其构造">
+<meta name="twitter:description" content="Polyhedral Graphs将多面体映射到图，并保持点、线之间的关联，如下图所示。">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/polyhedral.png">
 
 
 
@@ -134,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/22/Z变换/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/"/>
 
 
 
 
 
-  <title>Z变换 | 微雨潇潇</title>
+  <title>图论(三)---图结构及其构造 | 微雨潇潇</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
@@ -269,7 +274,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/Z变换/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/图论-三-图结构及其构造/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="魏榆小生">
@@ -286,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Z变换</h1>
+          <h1 class="post-title" itemprop="name headline">图论(三)---图结构及其构造</h1>
         
 
         <div class="post-meta">
@@ -298,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T13:43:42+08:00">
-                2017-06-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T18:08:41+08:00">
+                2017-07-09
               </time>
             
 
@@ -321,8 +326,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
-                    <span itemprop="name">Signal Processing</span>
+                  <a href="/categories/Graph-Theory/" itemprop="url" rel="index">
+                    <span itemprop="name">Graph Theory</span>
                   </a>
                 </span>
 
@@ -360,15 +365,15 @@
       
 
       
-        <p>本文资料整理自MIT公开课 “Introduction to Communication, Control, and Signal Processing”, 相关资料链接如下：<br><a href="http://iiscs.wssu.edu/drupal/node/2572" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2572</a><br><a href="http://iiscs.wssu.edu/drupal/node/2573" target="_blank" rel="external">http://iiscs.wssu.edu/drupal/node/2573</a><br>补充材料源自：<br><a href="http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm" target="_blank" rel="external">http://wlsyzx.yzu.edu.cn/kcwz/szxhcl/kechenneirong/jiaoan/jiaoan2.htm</a><br>Z变换可以看成是傅里叶变换的变种(即傅里叶变换是收敛域在单位圆上的Z变换)。根据序列的形式，Z变换可以分为有限长序列Z变换，右边序列Z变换，左边序列Z变换，双边Z变换。<br><a id="more"></a></p>
-<h2 id="有限长序列Z变换"><a href="#有限长序列Z变换" class="headerlink" title="有限长序列Z变换"></a>有限长序列Z变换</h2><p>有限长序列是指在有限区间 $n_1\leq n\leq n_2$ 序列具有非零值，在此区间外，序列值皆为零。有限长序列Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{n_2}x(n)z^{-n}<br>\end{equation}<br>由级数的相关知识可知，其收敛域包含区间 $0&lt;|z|&lt;\infty$。<br>如果$n_1\geq 0$, 收敛域为$0&lt;|z|\leq \infty$;<br>如果$n_2\leq 0$, 收敛域为$0\leq |z| &lt; \infty$。</p>
-<h2 id="右边序列Z变换"><a href="#右边序列Z变换" class="headerlink" title="右边序列Z变换"></a>右边序列Z变换</h2><p>右边序列是指在$n\geq n_1$时，x(n)有值，在$n＜n_1$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=n_1}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x-}$以外的Z平面，即$Z&gt;R_{x-}$，如下图所示。<br><img src="/2017/06/22/Z变换/右边序列Z.jpg" alt="右边序列Z"></p>
-<h2 id="左边序列Z变换"><a href="#左边序列Z变换" class="headerlink" title="左边序列Z变换"></a>左边序列Z变换</h2><p>左边序列是指在$n\leq n_2$时，x(n)有值，$n＞n_2$时，x(n)=0。其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{n_2}x(n)z^{-n}<br>\end{equation}<br>这时，其收敛域为收敛半径为$R_{x+}$以内的Z平面，即$Z&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/左边序列Z.jpg" alt="左边序列Z"></p>
-<h2 id="双边Z变换"><a href="#双边Z变换" class="headerlink" title="双边Z变换"></a>双边Z变换</h2><p>这类序列是指n为任意值时x(n)皆有值的序列，其Z变换为<br>\begin{equation}<br>X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>双边序列的收敛域为$R_{x-}&lt;|Z|&lt;R_{x+}$，如下图所示。<br><img src="/2017/06/22/Z变换/双边Z变换.jpg" alt="双边Z变换"> </p>
-<h2 id="定义及推理"><a href="#定义及推理" class="headerlink" title="定义及推理"></a>定义及推理</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>现考虑最一般的形式，双边Z变换。重新观察Z变换：<br>\begin{equation}<br>X(z)=\mathcal{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty}x(n)z^{-n}<br>\end{equation}<br>这里，z是复数，用极坐标的形式对其进行表示如下：<br>\begin{equation}<br>z = re^{j\Omega},\quad r\geq 0,\quad -\pi&lt; \Omega \leq \pi<br>\end{equation}<br>所以<br>\begin{equation}<br>X(z) = \sum_{n=-\infty}^{\infty}x(n)r^{-n}e^{-j\Omega n}<br>\end{equation}<br>当$r=1$时，对应DTFT。</p>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>考虑序列$x_1[n] = a^nu[n]$。如果$|a|&gt;1$，其傅里叶变换不存在。然而，对于任意的a, 当$r&gt;|a|$时, 级数$x[n]r^{-n}$绝对可和，此时<br>\begin{equation}<br>X_1(z) = \sum_{n=0}^{\infty}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&gt;|a|<br>\end{equation}</p>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>考虑序列$x_2[n]=-a^nu[-n-1]$,当$|a|&lt;1$时，其DTFT不存在。然而对于任意a,只要$r&lt;|a|$,级数$x[n]r^{-n}$绝对可和, 此时<br>\begin{equation}<br>X_1(z) = \sum_{n=-\infty}^{-1}x(n)r^{-n}=\frac{1}{1-az^{-1}},\quad |z|=r&lt;|a|<br>\end{equation}<br>从以上两个示例可以看出，即使Z变换的形式相同，但最终其决定作用的是其收敛域（region of convergence, ROC）。另外从其表示形式引申，可以将Z变换重新表示如下：<br>\begin{equation}<br>X(z) = \frac{Q(z)}{P(z)}<br>\end{equation}<br>对于以上公式，分别另分子，分母等于零；求得的值分别为零点和极点。收敛半径在零点和极点之间。</p>
-<h3 id="逆Z变换"><a href="#逆Z变换" class="headerlink" title="逆Z变换"></a>逆Z变换</h3><p>逆逆Z变换的形式如下（这里不做推倒）：<br>\begin{equation}<br>x[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}X(z)z^nd\omega,\quad z=\hat{r}e^{j\omega}<br>\end{equation}<br>其中，$\hat{r}$用来表示收敛域。</p>
+        <h1 id="Polyhedral-Graphs"><a href="#Polyhedral-Graphs" class="headerlink" title="Polyhedral Graphs"></a>Polyhedral Graphs</h1><p>将多面体映射到图，并保持点、线之间的关联，如下图所示。<br><a id="more"></a><br><img src="/2017/07/09/图论-三-图结构及其构造/polyhedral.png" alt="polyhedral"></p>
+<h1 id="Set-System-and-Hypergraphs"><a href="#Set-System-and-Hypergraphs" class="headerlink" title="Set System and Hypergraphs"></a>Set System and Hypergraphs</h1><p>$-\cdot$$Set$ $System$: An ordered pair $(V,\mathcal{F})$, where $V$ is a set of elements and $\mathcal{F}$ is a family of subsets of $V$。 其中$V$是元素集，$\mathcal{F}$是V的子集构成的集合。The set system $(V,\mathcal{F})$ is a loopless graph（无环图）。<br>$-\cdot$$Hypergraphs（超图）$: The set system can be thought of as generalizations of graphs, and are usually referred to as hypergraphs. The elements of $V$ are then called the vertices of the hypergraph, and the elements of $\mathcal{F}$ its edges or hyperedges.</p>
+<h2 id="Example1"><a href="#Example1" class="headerlink" title="Example1"></a>Example1</h2><p><img src="/2017/07/09/图论-三-图结构及其构造/hypergraph.png" alt="hypergraph"></p>
+<h1 id="Incidence-Graphs"><a href="#Incidence-Graphs" class="headerlink" title="Incidence Graphs"></a>Incidence Graphs</h1><p>$-\cdot$$Incidence$ $Graphs$: A natural graph associated with a set system $H = (V, \mathcal{F})$ is the bipartite graph $G[V,\mathcal{F}]$, where $v\in V$ and $F \in \mathcal{F}$ are adjacent if $v \in F$. 可以将其理解为：$V$，single 图的点集； F，single 图的路径。如下图所示。<br><img src="/2017/07/09/图论-三-图结构及其构造/incidence graph.png" alt="incidence graph"></p>
+<h1 id="Intersection-Graphs"><a href="#Intersection-Graphs" class="headerlink" title="Intersection Graphs"></a>Intersection Graphs</h1><p>With each set system $(V, \mathcal{F} )$ one may associate its intersection graph. This is the graph whose vertex set is $\mathcal{F}$ , two sets in $\mathcal{F}$ being adjacent if their intersection is nonempty. For historical reasons, this graph is known as the line graph of $G$ and denoted $L(G)$.<br><img src="/2017/07/09/图论-三-图结构及其构造/line graph.png" alt="line graph"><br>When $V = R$ and $\mathcal{F}$ is a set of closed intervals of $R$, the intersection graph of $(V, \mathcal{F})$ is called an interval graph. </p>
+<h1 id="Union-and-Intersection-of-Two-Single-Graphs"><a href="#Union-and-Intersection-of-Two-Single-Graphs" class="headerlink" title="Union and Intersection of Two Single Graphs"></a>Union and Intersection of Two Single Graphs</h1><p><img src="/2017/07/09/图论-三-图结构及其构造/union intersection.png" alt="union intersection"></p>
+<h1 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a>Cartesian Product</h1><p>Single 图的笛卡尔积符号：$\square$。两个single图$G,H$进行运算$G\square H$形成新图，其中顶点集为$V(G)\times V(H)$, 边集合为组合$(u_1,v_1)(u_2,v_2)$<br>$\left(u_1u_2\in E(G), v_1=v_2\right.$;或者$\left.v_1v_2\in E(H), u_1=u_2\right)$.<br><img src="/2017/07/09/图论-三-图结构及其构造/Cartesian.png" alt="Cartesian"></p>
+<h1 id="Directed-Graphs"><a href="#Directed-Graphs" class="headerlink" title="Directed Graphs"></a>Directed Graphs</h1><p>$-\cdot digraph(无向图)$：$D$<br><img src="/2017/07/09/图论-三-图结构及其构造/digraph.png" alt="digraph"><br>$-\cdot indegree(d^-_D(v))$: the Dnumber of arcs with head v.<br>$-\cdot outdegree(d^+_D(v))$: the number of arcs with tail v.</p>
+<h1 id="Infinite-Graphs"><a href="#Infinite-Graphs" class="headerlink" title="Infinite Graphs"></a>Infinite Graphs</h1><p><img src="/2017/07/09/图论-三-图结构及其构造/ingraph.png" alt="ingraph"></p>
 
       
     </div>
@@ -405,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/22/Wiener-Filter/" rel="next" title="Wiener Filter">
-                <i class="fa fa-chevron-left"></i> Wiener Filter
+              <a href="/2017/07/05/图论-二-图的同构/" rel="next" title="图论(二)---图的同构">
+                <i class="fa fa-chevron-left"></i> 图论(二)---图的同构
               </a>
             
           </div>
@@ -414,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/22/EM算法推导/" rel="prev" title="EM算法推导">
-                EM算法推导 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有限长序列Z变换"><span class="nav-number">1.</span> <span class="nav-text">有限长序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右边序列Z变换"><span class="nav-number">2.</span> <span class="nav-text">右边序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左边序列Z变换"><span class="nav-number">3.</span> <span class="nav-text">左边序列Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双边Z变换"><span class="nav-number">4.</span> <span class="nav-text">双边Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义及推理"><span class="nav-number">5.</span> <span class="nav-text">定义及推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例1"><span class="nav-number">5.1.1.</span> <span class="nav-text">示例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例2"><span class="nav-number">5.1.2.</span> <span class="nav-text">示例2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆Z变换"><span class="nav-number">5.2.</span> <span class="nav-text">逆Z变换</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Polyhedral-Graphs"><span class="nav-number">1.</span> <span class="nav-text">Polyhedral Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-System-and-Hypergraphs"><span class="nav-number">2.</span> <span class="nav-text">Set System and Hypergraphs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example1"><span class="nav-number">2.1.</span> <span class="nav-text">Example1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Incidence-Graphs"><span class="nav-number">3.</span> <span class="nav-text">Incidence Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intersection-Graphs"><span class="nav-number">4.</span> <span class="nav-text">Intersection Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Union-and-Intersection-of-Two-Single-Graphs"><span class="nav-number">5.</span> <span class="nav-text">Union and Intersection of Two Single Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cartesian-Product"><span class="nav-number">6.</span> <span class="nav-text">Cartesian Product</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Directed-Graphs"><span class="nav-number">7.</span> <span class="nav-text">Directed Graphs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Infinite-Graphs"><span class="nav-number">8.</span> <span class="nav-text">Infinite Graphs</span></a></li></ol></div>
             
 
           </div>
